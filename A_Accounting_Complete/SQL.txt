@@ -1,0 +1,26 @@
+                             If Me.List2.ListCount = 1 Then
+                                MyCriteria = "HAVING [AirlineName] ='" & Me.Combo1 & "'" & _
+                                             " AND [Date] Between #" & sDate & "# AND #" & eDate & "#" & _
+                                             " AND [Ticket Type]='" & Me.List2.List(0) & "'" & _
+                                             " ORDER BY [Ticket No], [Ticket Type], [AirlineName]"
+                                SQL = MySearchStr & MyCriteria
+                             End If
+                             If Me.List2.ListCount = 2 Then
+                                MyCriteria = "HAVING [AirlineName] ='" & Me.Combo1 & "'" & _
+                                             " AND [Date] Between #" & sDate & "# AND #" & eDate & "#" & _
+                                             " AND [Ticket Type]='" & Me.List2.List(0) & "'" & _
+                                             " OR [Ticket Type]= '" & Me.List2.List(1) & "'" & _
+                                             " ORDER BY [Ticket No], [Ticket Type], [AirlineName]"
+                                SQL = MySearchStr & MyCriteria
+                          
+                             End If
+                             If Me.List2.ListCount = 3 Then
+                                MyCriteria = "HAVING ((([AirlineName]) ='" & Me.Combo1 & "')" & _
+                                             " AND (([Date])Between #" & sDate & "# AND #" & eDate & "# Or" & _
+                                             " ([Ticket Type])='" & Me.List2.List(0) & "')" & _
+                                             " AND (([AirlineName])= '" & Me.List2.List(1) & "' ))" & _
+                                             " OR ((([Ticket Type])='" & Me.List2.List(2) & "'" & _
+                                             " Or ([Ticket Type])='" & Me.List2.List(3) & "')) " & _
+                                             "ORDER BY [Ticket No], [Ticket Type], [AirlineName]"
+                                SQL = MySearchStr & MyCriteria
+                             End If
